@@ -18,11 +18,12 @@
 			Usuário: <input type="text" name="login" id="login-nome"/>
 			Senha:<input type="password" name="senha" id="login-senha"/>
 			<input type="submit" value="Entrar"/>
-			<a>Esqueceu a senha?</a>
+			<a href="#">Esqueceu a senha?</a>
 		</pre>
-		<a>Novo no site?</a>
-		<a href="EditarCliente?acao=verCadastro">Faça o cadastro aqui</a>
+	<a>Novo no site?</a>
+	<a href="EditarCliente?acao=verCadastro">Faça o cadastro aqui</a>
 	</form>
+	
 	</center>
 <% request.getSession().setAttribute("cliente", null); %>
 <%@ include file="rodape.html" %>

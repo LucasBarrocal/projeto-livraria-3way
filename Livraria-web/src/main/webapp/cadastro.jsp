@@ -9,60 +9,50 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Cadastro</title>
 <link href="css/estilo.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
 <%@ include file="mascara.html" %>
 
 <h1>Confirme seus dados</h1>
 
-<pre class="container">
-${mensagem}
-<div class="centered">
+
+<div class="container painel-cadastro">
+
 <form method="post" action="EditarCliente?acao=cadastrar">
-<table>
-<tr>
-	<td>Nome:</td>
-	<td><input type="text" name="nome"/></td>
-</tr>
-<tr>
-	<td>Login:</td>
-	<td><input type="text" name="login"/></td>
-</tr>
-<tr>
-	<td>Senha:</td>
-	<td><input type="password" name="senha1"/></td>
-</tr>
-<tr>
-	<td>Repita senha:</td>
-	<td><input type="password" name="senha2"/></td>
-</tr>
-<tr>
-	<td>Endereço:</td>
-	<td><input type="text" name="endereco" /></td> 
-</tr>
-<tr>
-	<td>Cidade:</td>
-	<td><input type="text" name="cidade"/></td>
-</tr>
-<tr>
-	<td>Bairro:</td>
-	<td><input type="text" name="bairro"/></td>
-</tr>
-<tr>
-	<td>Estado:</td>
-	<td><input type="text" name="estado" /></td>
-</tr>
-<tr>
-	<td>CEP:</td>
-	<td><input type="text" name="cep" /></td>
-</tr>
-<tr>
-	<td colspan="2" align="center"><input type="submit" value="Confirmar"></td>
-</tr>
-</table>
+<div class="row">
+	
+	${mensagem}
+	<fieldset>
+		
+		
+		<div class="form-group">
+			<label for="nome">Nome Completo</label>
+			<input type="text" class="form-control" id="nome" name="nome" autofocus required>
+		</div>
+		
+		<div class="form-group">
+			<label for="login">Usuário</label>
+			<input type="text" class="form-control" id="login" name="login" required>
+		</div>
+		
+		<div class="form-group">
+			<label for="senha1">Senha</label>
+			<input type="password" class="form-control" id="senha1" name="senha1" required>
+		</div>
+		
+		<div class="form-group">
+			<label for="senha2">Repita a senha</label>
+			<input type="password" class="form-control" id="senha2" name="senha2" required>
+		</div>
+
+		
+	</fieldset>
+</div>
+	<input type="submit" class="btn btn-primary" value="Confirmar">
 </form>
 </div>
-</pre>
+	
 
  <% request.getSession().setAttribute("cliente", null); %>
  <%@ include file="rodape.html" %>

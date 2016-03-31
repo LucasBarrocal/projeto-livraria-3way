@@ -10,6 +10,7 @@
 </head>
 <body>
 <%@include file="masklog.html" %>
+<%@ include file="menu.html" %>
 <center>
   <span class="titulo">
     Resultado da Pesquisa:

@@ -12,6 +12,7 @@
 </head>
 <body>
 <%@ include file="masklog.html" %>
+<%@ include file="menu.html" %>
 <img alt="Promoção" src="imagens/destaque-home.jpg" id="img-destaque">
 <div class="container painel">
 	

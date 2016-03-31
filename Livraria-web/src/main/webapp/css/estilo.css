@@ -253,14 +253,15 @@ table{
 
 .login{
 	position: relative;
-	top:40px;
-	
+
 	font-size:medium;
 	font-weight:bold;
 }
 
 .login-form{
 	text-align:right;
+
+	
 }
 
 .login input{
@@ -268,21 +269,19 @@ table{
 	margin: 5px;
 }
 
+.painel-cadastro{
+	
+	padding: 50px;
+	width: 600px;
+	position: relative;
+	
+	
+	border-radius: 10px;
+	box-shadow: 3px 3px 2px #999;
 
-.centered{
-	text-align: center;
-}
-
-.centered table{
-	border-collapse: collapse;
-	border: 1px;
-	margin: auto auto;
-	text-align:left;
-}
-
-.centered table tr{
-	padding: 10px;
-	margin: 10px;
+	text-aling: center;
+	background-color: #eeeeec;
+	
 }
 
 footer{

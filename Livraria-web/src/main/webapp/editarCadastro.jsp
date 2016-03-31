@@ -8,59 +8,82 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Editar Cadastro</title>
+<link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/estilo.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <%@include file="masklog.html" %>
 <span class="titulo">
-Confirme seus dados
+<h1>Confirme seus dados</h1>
 </span>
-<pre>
-${mensagem}
+
+<div class="container painel-cadastro" >
 <form method="post" action="EditarCliente?acao=alterar">
-<table cellpadding="0" cellspacing="0" align="center">
-
-<tr>
-	<td>Login:</td>
-	<td><input type="text" name="login" /></td>
-</tr>
-<tr>
-	<td>Senha:</td>
-	<td><input type="password" name="senha1"/></td>
-</tr>
-<tr>
-	<td>Endereço:</td>
-	<td><input type="text" name="endereco"/></td> 
-</tr>
-<tr>
-	<td>Cidade:</td>
-	<td><input type="text" name="cidade" /></td>
-</tr>
-<tr>
-	<td>Bairro:</td>
-	<td><input type="text" name="bairro" /></td>
-</tr>
-<tr>
-	<td>Estado:</td>
-	<td><input type="text" name="estado" /></td>
-</tr>
-<tr>
-	<td>CEP:</td>
-	<td><input type="text" name="cep" /></td>
-</tr>
-<tr>
-	<td colspan="2" align ="center"><input type="submit" value="Confirmar" onclick=""></td>
-</tr>
-
-</table>
-</form>
-</pre>
+<div class="row">
+	
+	${mensagem}
+	<fieldset>
+		
+		
+		<div class="form-group">
+			<label for="nome">Nome Completo</label>
+			<input type="text" class="form-control" id="nome" name="nome" autofocus required>
+		</div>
+		
+		<div class="form-group">
+			<label for="login">Usuário</label>
+			<input type="text" class="form-control" id="login" name="login" required>
+		</div>
+		
+		<div class="form-group">
+			<label for="senha1">Senha</label>
+			<input type="password" class="form-control" id="senha1" name="senha1" required>
+		</div>
+		
+		<div class="form-group">
+			<label for="senha2">Repita a senha</label>
+			<input type="password" class="form-control" id="senha2" name="senha2" required>
+		</div>
+		
+		<div class="form-group">
+			<label for="endereco">Endereço</label>
+			<input type="text" class="form-control" id="endereco" name="endereco">
+		</div>
+		
+		<div class="form-group">
+			<label for="bairro">Bairro</label>
+			<input type="text" class="form-control" id="bairro" name="bairro" >
+		</div>
+		
+		<div class="form-group">
+			<label for="cidade">Cidade</label>
+			<input type="text" class="form-control" id="cidade" name="cidade">
+		</div>
+		
+		<div class="form-group">
+			<label for="estado">Estado</label>
+			<input type="text" class="form-control" id="estado" name="estado">
+		</div>
+		
+		
+		<div class="form-group">
+			<label for="cep">CEP</label>
+			<input type="text" class="form-control" id="cep" name="cep">
+		</div>	
+	</fieldset>
+</div>
+<input type="submit" class="btn btn-primary" value="Confirmar">
 <c:if test="${cliente.autenticacao }">
 	<c:if test="${carrinho.emptyCarrinho }">
 		<a href="FinalizarCompra">Finalizar a compra</a>
 	</c:if>
 	<a href="VerificarPedidos">Vericar Pedidos</a>
 </c:if>
+</form>
+</div>
+
+
+
 <%@include file="rodape.html" %>
 
 </body>

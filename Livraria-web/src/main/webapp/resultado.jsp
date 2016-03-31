@@ -10,6 +10,7 @@
 </head>
 <body>
 <%@ include file="mascara.html" %>
+<%@ include file="menu.html" %>
 <div class="container pesquisa">
 <center>
   <span class="titulo">
