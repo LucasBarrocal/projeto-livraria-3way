@@ -13,11 +13,11 @@
 </head>
 <body>
 <%@include file="masklog.html" %>
-<span class="titulo">
-<h1>Confirme seus dados</h1>
-</span>
+<div class="container">
 
-<div class="container painel-cadastro" >
+<div class="panel panel-primary painel-cadastro" >
+<div class="panel-heading">Editar Cadastro</div>
+<div class="panel-body">
 <form method="post" action="EditarCliente?acao=alterar">
 <div class="row">
 	
@@ -81,9 +81,10 @@
 </c:if>
 </form>
 </div>
+</div>
 
 
-
+</div>
 <%@include file="rodape.html" %>
 
 </body>

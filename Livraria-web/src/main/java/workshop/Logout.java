@@ -16,7 +16,7 @@ public class Logout extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		request.getSession().setAttribute("cliente", null);
-		RequestDispatcher rd = request.getRequestDispatcher("logout.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
 		rd.forward(request, response);
 			
 		}

@@ -200,10 +200,12 @@ body{
 }
 
 .painel a{
-	color: #333;
-	font-size: 14px;
+	font:monospace;
+	color: #000;
+	font-size: 20px;
 	text-align: center;
 	text-decoration: none;
+	
 }
 
 .pesquisa{
@@ -224,6 +226,7 @@ body{
 	font-weight: bold;
 	text-align: center;
 	
+	background-color: #eeeeec;
 	padding: 10px;
 	margin:10px;
 }
@@ -237,10 +240,8 @@ tr{
 	color: #000;
 }
 
-table{
-	border:1px;
-	border-collapse: collapse;
-	border-color: #ccc;
+.tabela-carrinho{
+	width: 800px;	
 }
 
 #login-msg{
@@ -249,6 +250,14 @@ table{
 	text-decoration: underline;
 	position: relative;
 	top:10px;
+}
+#carrinho-msg{
+	color:red;
+	text-align: center;
+	text-decoration: underline;
+	position: relative;
+	
+	margin-bottom: 20px;
 }
 
 .login{
@@ -270,18 +279,26 @@ table{
 }
 
 .painel-cadastro{
+
 	
-	padding: 50px;
-	width: 600px;
+	width: 500px;
+	
 	position: relative;
 	
+	top: 20px;
+	left: 390px;
+	 margin-bottom: 30px;
 	
-	border-radius: 10px;
-	box-shadow: 3px 3px 2px #999;
+	
+	
+}
 
-	text-aling: center;
-	background-color: #eeeeec;
-	
+.panel-body{
+	margin:5px;
+}
+
+#img-livro{
+	width: 150px;
 }
 
 footer{

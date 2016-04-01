@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Livros</title>
 <link href="css/estilo.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
 <%@ include file="mascara.html" %>
@@ -17,17 +18,17 @@
     Resultado da Pesquisa:
   </span>
   <br/><br/><br/>
-  <table cellpadding="0" cellspacing="0" width="600px">
+  <table class="table table-hover" width="600px">
   
-<tr class="tr­-superior">
+<thead>
+ <tr> 
+<th>Titulo</th>
   
-<td colspan="2">Titulo</td>
+<th>Autor</th>
   
-<td>Autor</td>
-  
-<td>Preço</td>
-  
-</tr>
+<th>Preço</th>
+  </tr>
+</thead>
     <c:forEach items="${livros}" var="livro">
       <tr onclick="document.location.href='VerLivro?codigo=${livro.codigo}'" 
 style="cursor:pointer" onmouseover="this.style.background='#ccc'" 

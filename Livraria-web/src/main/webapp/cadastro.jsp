@@ -13,12 +13,13 @@
 </head>
 <body>
 <%@ include file="mascara.html" %>
+<div class="container">
 
-<h1>Confirme seus dados</h1>
 
 
-<div class="container painel-cadastro">
-
+<div class="panel panel-primary painel-cadastro">
+<div class="panel-heading"><span class="glyphicon glyphicon-user"></span>Cadastro</div>
+<div class="panel-body">
 <form method="post" action="EditarCliente?acao=cadastrar">
 <div class="row">
 	
@@ -52,8 +53,9 @@
 	<input type="submit" class="btn btn-primary" value="Confirmar">
 </form>
 </div>
+</div>
 	
-
+</div>
  <% request.getSession().setAttribute("cliente", null); %>
  <%@ include file="rodape.html" %>
 </body>

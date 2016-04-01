@@ -6,6 +6,7 @@
 <html>
 <head>
 <link href="css/estilo.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap.css" rel="stylesheet">
 <script language="JavaScript" src="js/funcoes.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Carrinho</title>
@@ -14,9 +15,9 @@
 <%@ include file="mascara.html" %>
 <br/>
 <center>
-${mensagem}
+<h1 id="carrinho-msg">${mensagem}</h1>
 <% request.getSession().removeAttribute("mensagem"); %>
-	<table cellpadding="0" cellspacing="0" width="600px" ">
+	<table class="table table-bordered tabela-carrinho" >
 	<tr class="tr-superior">
 		<td>Titulo</td>
 		<td>Valor Unitário</td>
