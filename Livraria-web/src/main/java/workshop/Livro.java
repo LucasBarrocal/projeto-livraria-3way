@@ -7,6 +7,7 @@ public class Livro {
 	private String autor;
 	private double preco;
 	private String imagem;
+	private String descricao;
 	public int getCodigo() {
 		return codigo;
 	}
@@ -36,6 +37,12 @@ public class Livro {
 	}
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	
 	

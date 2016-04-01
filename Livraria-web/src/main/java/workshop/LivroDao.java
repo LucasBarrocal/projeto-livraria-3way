@@ -16,7 +16,7 @@ public class LivroDao {
 		Livro livro = null;
 		try{
 			StringBuffer sql = new StringBuffer();
-			sql.append("select AUTOR, TITULO, COD_LIVRO, IMAGEM, PRECO from ESTOQUE WHERE COD_LIVRO = ?");
+			sql.append("select AUTOR, TITULO, COD_LIVRO, IMAGEM, PRECO, DESCRICAO from ESTOQUE WHERE COD_LIVRO = ?");
 			PreparedStatement consulta = conexao.prepareStatement(sql.toString());
 			consulta.setInt(1, codigo);
 			ResultSet resultado = consulta.executeQuery();
@@ -27,6 +27,7 @@ public class LivroDao {
 				livro.setImagem(resultado.getString("IMAGEM"));
 				livro.setPreco(resultado.getDouble("PRECO"));
 				livro.setTitulo(resultado.getString("TITULO"));
+				livro.setDescricao(resultado.getString("DESCRICAO"));
 			}
 			conexao.close();
 		} catch(SQLException e){
@@ -39,7 +40,7 @@ public class LivroDao {
 		ArrayList<Livro> lista= new ArrayList<Livro>();
 		try{
 			StringBuffer sql = new StringBuffer();
-			sql.append("SELECT COD_LIVRO, TITULO, AUTOR, PRECO, IMAGEM FROM ESTOQUE WHERE TITULO LIKE ?");
+			sql.append("SELECT COD_LIVRO, TITULO, AUTOR, PRECO, IMAGEM, DESCRICAO FROM ESTOQUE WHERE TITULO LIKE ?");
 			this.conexao = FabricaConexao.getConexao();
 			PreparedStatement consulta = conexao.prepareStatement(sql.toString());
 			
@@ -52,6 +53,7 @@ public class LivroDao {
 				livro.setImagem(resultado.getString("IMAGEM"));
 				livro.setPreco(resultado.getDouble("PRECO"));
 				livro.setTitulo(resultado.getString("TITULO"));
+				livro.setDescricao(resultado.getString("DESCRICAO"));
 				lista.add(livro);
 			}
 			conexao.close();	

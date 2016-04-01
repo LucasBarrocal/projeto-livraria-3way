@@ -37,7 +37,7 @@ public class Pesquisa extends HttpServlet {
 					 rd = request.getRequestDispatcher("logresultado.jsp");
 				}
 				else{
-					 rd = request.getRequestDispatcher("resultado2.jsp");	
+					 rd = request.getRequestDispatcher("resultado.jsp");	
 				}
 				
 				rd.forward(request, response);

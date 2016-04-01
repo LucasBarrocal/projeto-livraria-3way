@@ -301,6 +301,25 @@ tr{
 	width: 150px;
 }
 
+
+
+.titulo{
+	font-weight: bold;
+	font-size: 23px;
+	margin: 2px;
+	color: #204a60;
+}
+
+.descricao{
+	
+	margin: 15px 0;
+}
+
+.preco{
+	color: #204a87;
+	font-weight: bold;
+}
+
 footer{
 	background-image: url(../imagens/fundo-rodape.jpg);
 	clear: both;
