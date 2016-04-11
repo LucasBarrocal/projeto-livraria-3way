@@ -6,6 +6,7 @@
 <html>
 <head>
 <link href="css/estilo.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 <script language="JavaScript" src="js/funcoes.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Carrinho</title>
@@ -14,9 +15,9 @@
 <%@ include file="masklog.html" %>
 <br/>
 <center>
-${mensagem}
+<h1 id="carrinho-msg">${mensagem}</h1>
 <% request.getSession().removeAttribute("mensagem"); %>
-	<table cellpadding="0" cellspacing="0" width="600px">
+	<table class="table table-bordered tabela-carrinho" >
 	<tr class="tr-superior">
 		<td>Titulo</td>
 		<td>Valor Unitário</td>
@@ -47,10 +48,10 @@ ${mensagem}
 			</tr>
 		</c:forEach>
 		<tr>
-			<td colspan="2" bgcolor="#000">&nbsp;</td>
+			<td colspan="2" bgcolor="#2e3436">&nbsp;</td>
 			<td bgcolor="#ccc">Total:R$</td>
 			<td bgcolor="#ccc">${carrinho.valorString}</td>
-			<td colspan="2" bgcolor="#000">&nbsp;</td>
+			<td colspan="2" bgcolor="#2e3436">&nbsp;</td>
 		</tr>
 	</table>
 	<a href="FinalizarCompra">Finalizar Compra</a>

@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.ws.rs.core.Request;
+
 public class ClienteDao {
 	
 	Connection conexao;
@@ -64,6 +66,8 @@ public class ClienteDao {
 		return cliente;
 	}
 	
+
+	
 	public void alterar(Cliente cliente){
 		try{
 			StringBuffer sql = new StringBuffer();
@@ -86,6 +90,10 @@ public class ClienteDao {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+
 	
 	public boolean existeCliente(String login){
 		boolean result = true;

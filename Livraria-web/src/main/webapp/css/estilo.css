@@ -1,5 +1,5 @@
 header{
-	background-image: url(../imagens/header-back.png);
+	background-image: url(../imagens/header-back.jpg);
 	clear: both;
 	opacity: 0.8;
 	
@@ -131,6 +131,8 @@ h1{
 	margin-top: 10px;
 }
 
+
+
 .container{
 	position: relative ;
 	margin: 0 auto;
@@ -144,6 +146,8 @@ body{
 	color: #333;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
+
+
 
 .painel{
 	position: relative;
@@ -163,7 +167,7 @@ body{
 }
 
 .painel h2{
-	text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+	text-shadow: 1px 1px 2px rgba(255,255,255,0.2);
 }
 
 .painel h2:before{
@@ -186,7 +190,7 @@ body{
 	background: rgba(255,255,255,0.8);
 	box-shadow: 0 0 5px #333;
 	transition: box-shadow 0.7s;
-	transform: scale(1.1) rotate(-2deg);
+	transform: scale(1.1) rotate(-1deg);
 }
 
 
@@ -301,6 +305,12 @@ tr{
 	width: 150px;
 }
 
+#alterar-senha{
+	font-size:15px;
+	font-weight: bold;
+	font-color:#cc0000;
+	margin: 5px;
+}
 
 
 .titulo{
@@ -321,7 +331,7 @@ tr{
 }
 
 footer{
-	background-image: url(../imagens/fundo-rodape.jpg);
+	background-image: url(../imagens/fundo-rodape2.png);
 	clear: both;
 	
 	padding: 20px 0;
@@ -330,6 +340,7 @@ footer{
 
 footer .container{
 	position: relative;
+	
 }
 
 .social{

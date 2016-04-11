@@ -1,8 +1,10 @@
 package workshop;
 
-import java.io.IOError;
+
 import java.io.IOException;
+
 import java.sql.SQLException;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,11 +13,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import javax.mail.*;
+
+
 @WebServlet("/EditarCliente")
 public class EditarCliente extends HttpServlet {
 	
 	private Cliente cliente;
 	private String mensagem;
+	 
+
 	
 	private void mostrarPagina(HttpServletRequest request, HttpServletResponse response, String pagina) throws ServletException, IOException
 	{
@@ -39,6 +46,7 @@ public class EditarCliente extends HttpServlet {
 		} catch(SQLException e){
 			e.printStackTrace();
 		}
+		
 		if("autenticar".equals(acao)){
 			cliente.setLogin(request.getParameter("login"));
 			cliente.setSenha(request.getParameter("senha"));
@@ -53,7 +61,7 @@ public class EditarCliente extends HttpServlet {
 				mostrarPagina(request,response,"loghome.jsp");
 			}
 		}
-		
+
 		if("cadastrar".equals(acao)){
 			String senha1= request.getParameter("senha1");
 			String senha2= request.getParameter("senha2");
@@ -67,11 +75,11 @@ public class EditarCliente extends HttpServlet {
 			cliente.setNome(request.getParameter("nome"));
 			cliente.setSenha(request.getParameter("senha1"));
 			cliente.setLogin(request.getParameter("login"));
-			cliente.setEndereco(request.getParameter("endereco"));
-			cliente.setCidade(request.getParameter("cidade"));
-			cliente.setBairro(request.getParameter("bairro"));
-			cliente.setEstado(request.getParameter("estado"));
-			cliente.setCep(request.getParameter("cep"));
+			cliente.setEndereco("rua");
+			cliente.setCidade("cidade");
+			cliente.setBairro("bairro");
+			cliente.setEstado("estado");
+			cliente.setCep("0000000");
 			
 			if(dao.existeCliente(request.getParameter("login"))){
 					mensagem = "Já existe esse usuário em nosso sistema!";

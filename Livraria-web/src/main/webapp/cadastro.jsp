@@ -18,8 +18,10 @@
 
 
 <div class="panel panel-primary painel-cadastro">
-<div class="panel-heading"><span class="glyphicon glyphicon-user"></span>Cadastro</div>
+<div class="panel-heading">Cadastro</div>
 <div class="panel-body">
+
+
 <form method="post" action="EditarCliente?acao=cadastrar">
 <div class="row">
 	
@@ -52,6 +54,8 @@
 </div>
 	<input type="submit" class="btn btn-primary" value="Confirmar">
 </form>
+
+
 </div>
 </div>
 	

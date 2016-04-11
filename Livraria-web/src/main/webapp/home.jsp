@@ -62,7 +62,7 @@
 				<a href="VerLivro?codigo=15">
 					<figure>
 						<img src="imagens/sandman.jpg">
-						<figcaption>The Ultimate Sandman por R$25,80</figcaption>
+						<figcaption>The Ultimate Sandman a partir de R$400,00</figcaption>
 					</figure>
 				</a>
 			</li>
