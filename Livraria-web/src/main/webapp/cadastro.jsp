@@ -18,7 +18,7 @@
 
 
 <div class="panel panel-primary painel-cadastro">
-<div class="panel-heading">Cadastro</div>
+<div class="panel-heading"><span class="glyphicon glyphicon-user"></span>Cadastro</div>
 <div class="panel-body">
 
 
