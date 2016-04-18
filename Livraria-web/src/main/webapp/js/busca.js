@@ -1,24 +1,44 @@
 function buscarProduto(titulo){
-	var livros = ["Branca de Neve", "A Bela Moça", "O Guia", "Dr. Ozzy", "Pequeno Irmão"];
-	var filmes = ["Deadpool", "Godzilla", "As Tranças da Vovó Careca", "Loucademia de Polícia"];
-	var musicas= ["ZZ Top", "Black Sabbath", "Lorranna Santos"];
-	var games= ["Mario Kart", "Fifa 17", "Battlefield 4", "Undertale", "SuperHot"];
+	var produtos=[    
+	              {"livros" : ["BRANCA DE NEVE", "A BELA MOÇA", "O GUIA", "DR. OZZY", "PEQUENO IRMÃO"],
+	              "filmes" : ["DEADPOOL", "GODZILLA", "LAGOA AZUL", "AMERICAN PIE", "HANNIBAL"],
+	              "musicas": ["ZZ TOP", "BLACK SABBATH", "AC DC", "PRIMUS", "MOLEJO"],
+	              "games": ["MIRRORS EDGE", "FIFA", "BATTLEFIELD", "UNDERTALE", "SUPERHOT"]}
+	];
+
+	var nome = titulo.value.toUpperCase();
+	for(var i=0; i < produtos.length ; i++){
+		for(var v=0; v < produtos[i].games.length; v++){
+			if(produtos[i].games[v] == nome){
+				window.alert("Temos "+ titulo.value +" em nosso estoque de jogos");
+				
+			}
+		}
+		for(var v=0; v < produtos[i].livros.length; v++){    
+			if(produtos[i].livros[v] == nome){
+				window.alert("Temos "+ titulo.value +" em nosso estoque de livros");
+				
+			}
+		}
+		for(var v=0; v < produtos[i].filmes.length; v++){
+			if(produtos[i].filmes[v] == nome){
+				window.alert("Temos "+ titulo.value +" em nosso estoque de filmes");
+				
+			}
+		}
+		for(var v=0; v < produtos[i].musicas.length; v++){ 
+			if(produtos[i].musicas[v] == nome){
+				window.alert("Temos "+ titulo.value +" em nosso estoque de músicas");
+				
+			} 
+		}
+    }
 	if(titulo.value == ""){
-		alert("Busca Vazia! Procure entre nossas seleções de LIVROS, FILMES, GAMES e MÚSICAS! ");
-	}
-	else if(titulo.value=="livros" || titulo.value=="livro"||titulo.value=="Livros"||titulo.value=="Livro"){
-		window.alert(livros);
-	}
-	else if(titulo.value=="filmes" || titulo.value=="filme"||titulo.value=="Filmes"||titulo.value=="Filme"){
-		window.alert(filmes);
-	}
-	else if(titulo.value=="musicas" || titulo.value=="músicas"||titulo.value=="musica"||titulo.value=="música"){
-		window.alert(musicas);
-	}
-	else if(titulo.value=="games" || titulo.value=="jogos"||titulo.value=="Games"||titulo.value=="Jogos"){
-		window.alert(games);
+		window.alert("Busca vazia!");
 	}
 	else{
-		window.alert("Procure entre nossas seleções de LIVROS, FILMES e MÚSICAS!");
+		window.alert("Produto não encontrado!");
 	}
+     
+  	
 }
