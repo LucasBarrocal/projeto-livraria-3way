@@ -42,6 +42,8 @@
                 <h4>${livro.autor }</h4>
                 <p class="descricao">${livro.descricao }</p>
             	<a class="btn btn-primary descricao" href="VerLivro?codigo=${livro.codigo}">Ver Produto <span class="glyphicon glyphicon-circle-arrow-left"></span></a>
+            	<a class="btn btn-success" href="EditarCarrinho?codigo=${livro.codigo}&acao=adicionar">Adicionar ao Carrinho</a>
+            	
             </div>
         </div>
         </div>

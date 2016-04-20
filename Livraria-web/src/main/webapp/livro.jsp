@@ -44,7 +44,7 @@
 	</div>
 	</div>
 </div>
-    <a class="btn btn-primary" href="EditarCarrinho?codigo=${livro.codigo}&acao=adicionar">Adicionar ao Carrinho de compras</a>
+    <a class="btn btn-success" href="EditarCarrinho?codigo=${livro.codigo}&acao=adicionar">Adicionar ao Carrinho</a>
 </div>
 </div>
 </div>

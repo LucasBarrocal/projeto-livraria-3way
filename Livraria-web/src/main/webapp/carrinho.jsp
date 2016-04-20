@@ -26,9 +26,9 @@
 		<td colspan="2">Ação</td>
 	</tr>
 	<c:forEach items="${carrinho.itens}" var="item">
-		<tr>
+		<tr class="table">
 			<td>${item.livro.titulo}</td>
-			<td>${item.livro.preco}</td>
+			<td>R$ ${item.livro.preco}0</td>
 			<td>
 			<form action="EditarCarrinho" name="form${item.livro.codigo}">
 			<input type="hidden" name="codigo" value="${item.livro.codigo}"/>
@@ -36,7 +36,7 @@
 			<input size="3" name="qtd${item.livro.codigo}" value="${item.qtd}"/>
 			</form>
 			</td>
-			<td>${item.valor}</td>
+			<td>R$ ${item.valor}0</td>
 			
 			<td>
 			<a href="javascript:document.form${item.livro.codigo}.submit()"> alterar </a>
@@ -49,12 +49,13 @@
 		</c:forEach>
 		<tr>
 			<td colspan="2" bgcolor="#2e3436">&nbsp;</td>
-			<td bgcolor="#ccc">Total:R$</td>
-			<td bgcolor="#ccc">${carrinho.valorString}</td>
+			<td bgcolor="#ccc">Total:</td>
+			<td bgcolor="#ccc">R$ ${carrinho.valorString}0</td>
 			<td colspan="2" bgcolor="#2e3436">&nbsp;</td>
 		</tr>
 	</table>
-	<a href="FinalizarCompra">Finalizar Compra</a>
+	<a href="FinalizarCompra" class="btn btn-success">Finalizar Compra</a>
+	<a href="Pesquisa" class="btn btn-primary">Continuar Comprando</a>
 </center>
 
 <%@ include file="rodape.html" %>
