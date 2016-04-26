@@ -13,18 +13,19 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/FinalizarCompra")
 public class FinalizarCompra extends HttpServlet{
 	
+	private String mensagem;
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		Cliente cliente = (Cliente) request.getSession().getAttribute("cliente");
 		Carrinho carrinho = (Carrinho) request.getSession().getAttribute("carrinho");
 		
-		if(carrinho.getItens().size()==0 || cliente == null){
-			String mensagem = "O carrinho esta vazio ou você não está logado!";
-			request.getSession().setAttribute("mensagem",mensagem);
-			response.sendRedirect("EditarCarrinho");
+		if(cliente == null){
+			request.setAttribute("mensagem", mensagem);
+			response.sendRedirect("login.jsp");
 			return;
 		}
 		request.getSession().removeAttribute("carrinho");
-		
+		mensagem = "";
 		Pedido pedido = new Pedido();
 		pedido.setCliente(cliente);
 		pedido.setItens(carrinho.getItens());

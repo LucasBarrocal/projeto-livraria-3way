@@ -16,6 +16,15 @@ public class Carrinho {
 		}
 		itens.add(item);
 	}
+	public void subtrair(ItemCarrinho item){
+		for(ItemCarrinho itm: itens){
+			if(itm.equals(item)){
+				itm.setQtd(itm.getQtd()-1);
+				return;
+			}
+		}
+		itens.remove(item);
+	}
 	public String getValorString(){
 		return getValor() +"";
 	}

@@ -5,12 +5,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Transação Concluida</title>
-<link href="css/estilo.css" rel="stylesheet" type="text/css">
+<link href="css/estilo.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet" >
 </head>
 <body>
 <%@include file="masklog.html" %>
-<h1>Pedido Incluido com Sucesso!!</h1>
-<a href="VerificarPedidos">Verificar Pedido</a>
+<div class="container ">
+<div class="panel painel-fim">
+<h1 class="titulo">Pedido Incluido com Sucesso!!</h1>
+<center>
+<a href="VerificarPedidos" class="btn btn-primary btn-fim">Verificar Pedido</a>
+</center>
+</div>
+</div>
+
+
 <%@include file="rodape.html" %>
 
 </body>

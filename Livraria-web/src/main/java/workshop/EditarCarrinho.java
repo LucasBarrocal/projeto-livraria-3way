@@ -14,12 +14,15 @@ public class EditarCarrinho extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		
 		String cod = request.getParameter("codigo");
 		String acao = request.getParameter("acao");
+		
 		Carrinho carrinho = (Carrinho) request.getSession().getAttribute("carrinho");
 		if(carrinho == null){
 			carrinho = new Carrinho();
 		}
+		
 		int codigo;
 		try{
 			codigo = Integer.parseInt(cod);
@@ -39,6 +42,9 @@ public class EditarCarrinho extends HttpServlet{
 		item.setLivro(livro);
 		if("adicionar".equals(acao)){
 			carrinho.adicionar(item);
+		}
+		if("subtrair".equals(acao)){
+			carrinho.subtrair(item);
 		}
 		if("remover".equals(acao)){
 			carrinho.remover(item);
@@ -65,6 +71,9 @@ public class EditarCarrinho extends HttpServlet{
 			rd = request.getRequestDispatcher("logcarrinho.jsp");
 		}
 		rd.forward(request, response);
+		
+		
 	}
+	
 
 }

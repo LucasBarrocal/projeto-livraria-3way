@@ -5,43 +5,38 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="css/estilo.css" rel="stylesheet" type="text/css">
+<link href="css/estilo.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
 <title>Pedidos</title>
 </head>
 <body>
 <%@include file="masklog.html" %>
-<form action="">
+<form>
 <center>
-	<span class="titulo">
-	Pedidos Realizados: <br/><br/><br/>
-	</span>
-	<table cellspacing="2" cellpadding="2">
-		<tr class="tr-superior">
-			<td>Data</td>
-			<td>QTD</td>
-			<td>Pedido</td>
-			<td>Status</td>
-		</tr>
-	<c:forEach items="${pedidos}" var="pedido" >
-	<c:forEach items="${pedido.itens}" var="item">
-		<tr>
-			<td>
-				<c:out value="${pedido.dataPedidoString}"/>
-			</td>
-			<td align="center">
-				<c:out value="${item.qtd}"/>
-			</td>
-			<td>
-				<c:out value="${item.livro.titulo}"/>
-			</td>
-			<td>
-				<c:out value="${pedido.status}"/>
-			</td>
-		</tr>
-	</c:forEach>
-	</c:forEach>
-	</table>
-</center>
+	<span class="titulo container"> Pedidos Realizados: </span>
+			<table class="table table-pedido container">
+				<thead>
+					<tr class="tr-superior">
+						<th>Data</th>
+						<th>QTD</th>
+						<th>Pedido</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${pedidos}" var="pedido">
+						<c:forEach items="${pedido.itens}" var="item">
+							<tr>
+								<td><c:out value="${pedido.dataPedidoString}" /></td>
+								<td><c:out value="${item.qtd}" /></td>
+								<td><c:out value="${item.livro.titulo}" /></td>
+								<td><c:out value="${pedido.status}" /></td>
+							</tr>
+						</c:forEach>
+					</c:forEach>
+				</tbody>
+			</table>
+		</center>
 
 </form>
 <%@include file="rodape.html" %>
