@@ -32,6 +32,7 @@
 }
 </style>
 	</header>
+	<c:if test="${carrinho.getItens().size() != 0 }">
 	<div class="jumbotron">
 		<div class="container">
 			<h1>Ótima Escolha</h1>
@@ -78,7 +79,7 @@
 									</form>
 									
 								</td>
-								<td class="preco-total"><span>R$ ${item.valor}0</span></td>
+								<td class="preco-total"><span>R$ ${item.valor2}</span></td>
 								<td class="item-remove"><a
 									href="EditarCarrinho?codigo=${item.livro.codigo}&acao=remover">
 										<span class="icone-remove">X</span> <span
@@ -145,7 +146,7 @@
 					<tbody>
 						<tr>
 							<td>Total dos Produtos</td>
-							<td>R$ ${carrinho.valorString}0</td>
+							<td>R$ ${carrinho.valorString2}</td>
 						</tr>
 						<tr>
 							<td>Descontos</td>
@@ -155,7 +156,7 @@
 					<tfoot>
 						<tr>
 							<td>TOTAL:</td>
-							<td>R$ ${carrinho.valorString}0</td>
+							<td>R$ ${carrinho.valorString2}</td>
 						</tr>
 					</tfoot>
 				</table>
@@ -164,7 +165,17 @@
 			</div>
 		</div>
 	</div>
-	
+	</div>
+</c:if>
+<c:if test="${carrinho.getItens().size() == 0}">
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Carrinho Vazio</h1>
+			<p>Adicione algum produto ao seu carrinho de compras para continuar!</p>
+			<a href="Pesquisa" class="btn btn-primary">Continuar Comprando</a>
+		</div>
+	</div>
+</c:if>	
 
 
 <%@ include file="rodape.html"%>

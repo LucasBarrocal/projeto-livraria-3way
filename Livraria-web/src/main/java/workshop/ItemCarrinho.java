@@ -3,7 +3,8 @@ package workshop;
 public class ItemCarrinho {
 	private int codigo;
 	private Livro livro;
-	private double valor;
+	
+	private String valor2;
 	private int qtd=1;
 	public int getCodigo() {
 		return codigo;
@@ -34,12 +35,18 @@ public class ItemCarrinho {
 			return false;
 		}
 	}
+
 	
-	public double getValor(){
-		return livro.getPreco()*qtd;
+	public String getValor2(){
+		
+		String quantTotal = String.format("%.2f", livro.getPreco()*qtd) ;
+		return quantTotal;
 	}
-	public void setValor(int valor){
-		this.valor = valor;
+	public void setValor2(int valor){
+		
+		String resultado = String.format("%.2f", valor) ;
+		this.valor2 = resultado;
 	}
+	
 
 }

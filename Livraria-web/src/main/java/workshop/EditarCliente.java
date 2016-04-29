@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import javax.mail.*;
+
 
 
 @WebServlet("/EditarCliente")
@@ -47,6 +47,7 @@ public class EditarCliente extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+	
 		if("autenticar".equals(acao)){
 			cliente.setLogin(request.getParameter("login"));
 			cliente.setSenha(request.getParameter("senha"));

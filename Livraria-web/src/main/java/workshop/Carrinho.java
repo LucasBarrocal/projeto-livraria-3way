@@ -25,8 +25,9 @@ public class Carrinho {
 		}
 		itens.remove(item);
 	}
-	public String getValorString(){
-		return getValor() +"";
+
+	public String getValorString2(){
+		return getValor2() +"";
 	}
 	public boolean isEmptyCarrinho(){
 		if(itens.size() == 0){
@@ -36,13 +37,16 @@ public class Carrinho {
 			return false;
 		}
 	}
-	public double getValor(){
-		double result = 0;
+
+	
+	public String getValor2(){
+		String result = "";
 		for(ItemCarrinho item : itens){
-			result += item.getValor();
+			result += item.getValor2();
 		}
 		return result;
 	}
+	
 	public void remover(ItemCarrinho item){
 		itens.remove(item);
 	}

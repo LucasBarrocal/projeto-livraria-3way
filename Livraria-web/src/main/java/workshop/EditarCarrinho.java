@@ -22,7 +22,7 @@ public class EditarCarrinho extends HttpServlet{
 		if(carrinho == null){
 			carrinho = new Carrinho();
 		}
-		
+
 		int codigo;
 		try{
 			codigo = Integer.parseInt(cod);
@@ -73,6 +73,10 @@ public class EditarCarrinho extends HttpServlet{
 		rd.forward(request, response);
 		
 		
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		doGet(request,response);
 	}
 	
 

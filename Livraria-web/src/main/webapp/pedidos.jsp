@@ -13,7 +13,7 @@
 <%@include file="masklog.html" %>
 <form>
 <center>
-	<span class="titulo container"> Pedidos Realizados: </span>
+	<h1 class="titulo-pedido container"> Pedidos Realizados: </h1>
 			<table class="table table-pedido container">
 				<thead>
 					<tr class="tr-superior">

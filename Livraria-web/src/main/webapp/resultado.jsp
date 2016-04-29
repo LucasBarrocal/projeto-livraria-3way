@@ -13,22 +13,23 @@
 <%@ include file="mascara.html" %>
 
 
-        <div class="container">
+        <div class="container painel-resultado">
 
         <!-- Page Heading -->
         
         <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 painel-menu">
         <%@ include file="menu.html" %>
         </div>
             <div class="col-lg-9">
-                <h1 class="page-header">Resultado
+                <h1 class="page-header h1">Resultado
                     <small>Livros Disponíveis</small>
                 </h1>
            
         <!-- /.row -->
 
         <!-- Project -->
+        
         <c:forEach items="${livros }" var="livro">
         <div class="panel">
         <div class="row">
@@ -40,7 +41,7 @@
             <div class="col-md-9">
                 <h3 class="titulo">${livro.titulo }</h3>
                 <h4 class="pull-right preco">R$ ${livro.preco }0</h4>
-                <h4>${livro.autor }</h4>
+                <h4 class="autor">${livro.autor }</h4>
                 <p class="descricao">${livro.descricao }</p>
             	<a class="btn btn-primary descricao" href="VerLivro?codigo=${livro.codigo}">Ver Produto <span class="glyphicon glyphicon-circle-arrow-left"></span></a>
                 <a class="btn btn-success" href="EditarCarrinho?codigo=${livro.codigo}&acao=adicionar">Adicionar ao Carrinho</a>

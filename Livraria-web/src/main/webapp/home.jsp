@@ -87,6 +87,7 @@
 </div>
 <% request.getSession().setAttribute("cliente", null); %>
  
-<%@ include file="rodape.html" %>
+
 </body>
+<%@ include file="rodape.html" %>
 </html>

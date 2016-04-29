@@ -12,7 +12,7 @@
 <body>
 <%@ include file="masklog.html" %>
 
-        <div class="container">
+        <div class="container painel-resultado">
 
         <!-- Page Heading -->
         

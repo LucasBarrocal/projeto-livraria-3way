@@ -87,14 +87,6 @@ header{
 	width: 170px;
 }
 
-.quantidade input{
-	text-align: center;
-}
-
-.quantidade a{
-	font-size: 15px;
-	padding: 2px;
-}
 
 .busca,
 .menu-departamentos{
@@ -144,6 +136,7 @@ h1{
 	position: relative ;
 	margin: 0 auto;
 	width: 1200px;
+	min-height:100%;
 }
 
 body{
@@ -152,6 +145,8 @@ body{
 	
 	color: #333;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	height: 100%;
+
 }
 
 
@@ -159,7 +154,7 @@ body{
 .painel{
 	position: relative;
 	right: 20px;
-	margin: 20px 0;
+	margin: 20px 0 110px;
 	padding: 10px;
 	width:990px;
 	float:right;
@@ -295,7 +290,7 @@ tr{
 	position: relative;	
 	top: 20px;
 	left: 390px;
-	 margin-bottom: 30px;	
+	 margin-bottom: 250px;	
 }
 
 .panel-body{
@@ -304,6 +299,8 @@ tr{
 
 #img-livro{
 	width: 150px;
+	margin: 2px;
+	padding: 5px 1px;
 }
 
 #alterar-senha{
@@ -337,9 +334,18 @@ tr{
 	font-weight: bold;
 	font-size: 23px;
 
-	padding: 10px;
-	margin: 12px;
-	color: #5c3566;
+	padding: 10px 0;
+	margin: 5px 0 12px ;
+	color: #3465a4;
+}
+
+.titulo-pedido{
+	font-weight: bold;
+	font-size: 23px;
+
+	padding: 10px 0;
+	margin: 15px;
+	color: #204a87;
 }
 
 .descricao{
@@ -350,5 +356,65 @@ tr{
 .preco{
 	color: #204a87;
 	font-weight: bold;
+	padding-right: 10px;
 }
 
+.autor{
+	font-weight: bold;
+	color: gray;
+}
+.painel-resultado{
+	margin-bottom: 52px;
+}
+.painel-menu{
+	padding-left: 0; 
+}
+footer{
+	background-image: url(../imagens/fundo-rodape2.png);
+	clear: both;
+	
+	padding: 20px 0;
+	margin-top: 10px;
+	width:100%;
+	position: absolute;
+	bottom: 0;
+	left:0;
+}
+
+#logo-rodape{
+		width: 230px;
+	}
+
+.social{
+	position: absolute;
+	top: 12px;
+	right: 0;
+}
+.social li{
+	float: left;
+	margin-left: 25px;
+}
+.social a{
+	height: 32px;
+	width: 32px;
+	
+	display: block;
+	text-indent: -9999px;
+}
+
+.social a[href*="facebook.com"]{
+	background-image: url(../imagens/facebook.png);
+}
+
+.social a[href*="twitter.com"]{
+	background-image: url(../imagens/twitter.png);
+}
+
+.social a[href*="plus.google.com"]{
+	background-image: url(../imagens/googleplus.png);
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
