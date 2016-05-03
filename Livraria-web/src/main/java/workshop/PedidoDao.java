@@ -19,7 +19,7 @@ public class PedidoDao {
 		Date dataPedido = new Date(pedido.getDataPedido().getTime());
 		
 		StringBuffer sql = new StringBuffer();
-		sql.append("INSERT INTO PEDIDO (DATA_PEDIDO, COD_CLIENTE, STATUS) VALUES (?,?,?)");
+		sql.append("INSERT INTO PEDIDO (DATA_PEDIDO, COD_CLIENTE, STATUS, PAGAMENTO) VALUES (?,?,?,?)");
 		
 		StringBuffer sqlItem = new StringBuffer();
 		sqlItem.append("INSERT INTO ITEM_PEDIDO (COD_LIVRO, QTD, COD_PEDIDO) VALUES (?,?,?)");
@@ -30,6 +30,7 @@ public class PedidoDao {
 			consulta.setDate(1,dataPedido);
 			consulta.setInt(2, pedido.getCliente().getCodigo());
 			consulta.setString(3, pedido.getStatus());
+			consulta.setString(4, pedido.getPagamento());
 			consulta.execute();
 			
 			PreparedStatement consultaItem = conexao.prepareStatement(sqlItem.toString());
@@ -62,7 +63,7 @@ public class PedidoDao {
 	public List<Pedido> listar(int codCliente){
 		ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
 		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT cliente.NOME, pedido.COD_PEDIDO, pedido.DATA_PEDIDO, pedido.STATUS, estoque.TITULO, estoque.COD_LIVRO, item_pedido.QTD FROM CLIENTE INNER JOIN pedido ON cliente.COD_CLIENTE = pedido.COD_CLIENTE INNER JOIN item_pedido ON pedido.COD_PEDIDO = item_pedido.COD_PEDIDO INNER JOIN estoque ON item_pedido.COD_LIVRO = estoque.COD_LIVRO WHERE cliente.COD_CLIENTE = ?");
+		sql.append("SELECT cliente.NOME, pedido.COD_PEDIDO, pedido.DATA_PEDIDO, pedido.PAGAMENTO, pedido.STATUS, estoque.TITULO, estoque.COD_LIVRO, item_pedido.QTD FROM CLIENTE INNER JOIN pedido ON cliente.COD_CLIENTE = pedido.COD_CLIENTE INNER JOIN item_pedido ON pedido.COD_PEDIDO = item_pedido.COD_PEDIDO INNER JOIN estoque ON item_pedido.COD_LIVRO = estoque.COD_LIVRO WHERE cliente.COD_CLIENTE = ?");
 
 		
 		try{
@@ -76,6 +77,7 @@ public class PedidoDao {
 				pedido.setCliente(cliente);
 				pedido.setCodigo(resultado.getInt("COD_PEDIDO"));
 				pedido.setDataPedido(resultado.getDate("DATA_PEDIDO"));
+				pedido.setPagamento(resultado.getString("PAGAMENTO"));
 				pedido.setStatus(resultado.getString("STATUS"));
 				
 				ArrayList<ItemCarrinho> itens = new ArrayList<ItemCarrinho>();

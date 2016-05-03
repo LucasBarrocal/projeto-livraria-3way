@@ -8,12 +8,16 @@
 
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/checkout.css" rel="stylesheet">
+
 <title>Confirmar Pedidos</title>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="js/Pgto.js"></script>
 </head>
 <body>
 	<header> <nav class=" navbar navbar-primary navbar-static-top">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="home.jsp">Arsenal Livraria</a>
+		<a class="navbar-brand" href="home.jsp">TRIWAY Livraria</a>
 
 		<button class="navbar-toggle" type="button"
 			data-target="navbar-collapse" data-toggle="collapse">menu</button>
@@ -36,7 +40,7 @@
 	<div class="jumbotron">
 		<div class="container">
 			<h1>Ótima Escolha</h1>
-			<p>Obrigado por comprar na Arsenal Livraria! Por favor, confirme
+			<p>Obrigado por comprar na TriWay Livraria! Por favor, confirme
 				seus dados antes de efetivar a compra!</p>
 		</div>
 	</div>
@@ -101,20 +105,15 @@
 			<div class="col-md-8">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<fieldset class="col-md-5">
+						<form method="post" action="#">
 							<legend>Forma de Pagamento</legend>
 							
-							<div class="radio opt-cartao">
-								<label><input type="radio" name="optradio">Cartão de Crédido</label>
+							<div class="radio">
+								<label><input value="cartao" type="radio" name="optradio">Cartão de Crédito</label>
 							</div>
-							<div class="radio opt-boleto">
-								<label><input type="radio" name="optradio">Boleto
-									Bancário (10% desc.)</label>
-							</div>
-						</fieldset>
-						
-						<fieldset class="col-md-7">	
-							<legend>Cartão de Crédito</legend>
+							
+							<div class="cartao box">	
+							<label>Cartão de Crédito</label>
 
 							<div class="form-group">
 								<label for="numero-cartao">Número - CVV</label> <input
@@ -137,7 +136,24 @@
 									type="month" class="form-control" id="validade-cartao"
 									name="validade-cartao">
 							</div>
-						</fieldset>
+						</div>
+							
+							<div class="radio">
+								<label><input value="boleto" type="radio" name="optradio">Boleto
+									Bancário (10% desc.)</label>
+							</div>
+							
+							<div class="boleto box">	
+								<div class="form-group">
+								<label for="numero-CPF">Informe seu CPF</label> <input
+									type="text" class="form-control" id="numero-CPF"
+									name="numero-CPF">
+								</div>
+							</div>
+						
+						</form>
+						
+						
 					</div>
 				</div>
 			</div>
@@ -150,7 +166,7 @@
 						</tr>
 						<tr>
 							<td>Descontos</td>
-							<td>R$ 0,00</td>
+							<td>R$ 00,00</td>
 						</tr>
 					</tbody>
 					<tfoot>
@@ -165,7 +181,9 @@
 			</div>
 		</div>
 	</div>
+	</div>
 </c:if>
+
 <c:if test="${carrinho.getItens().size() == 0}">
 	<div class="jumbotron">
 		<div class="container">
@@ -177,7 +195,6 @@
 </c:if>	
 
 <% request.getSession().setAttribute("cliente", null); %>
-
 
 </body>
 <%@ include file="rodape.html"%>

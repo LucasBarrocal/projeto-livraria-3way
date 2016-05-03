@@ -9,6 +9,8 @@ public class Pedido {
 	private List<ItemCarrinho> itens;
 	private Cliente cliente;
 	private Date dataPedido = new Date();
+	private String pagamento;
+	
 	private String status;
 	private String dataPedidoString;
 	
@@ -59,6 +61,15 @@ public class Pedido {
 	public void setDataPedidoString(String dataPedidoString) {
 		this.dataPedidoString = dataPedidoString;
 	}
+	
+	public String getPagamento() {
+		return pagamento;
+	}
+
+	public void setPagamento(String pagamento) {
+		this.pagamento = pagamento;
+	}
+
 	
 
 }

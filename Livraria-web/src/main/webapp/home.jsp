@@ -3,6 +3,7 @@
 <%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
 <jsp:useBean id="cliente" scope="session" class="workshop.Cliente"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -22,15 +23,15 @@
 				<a href="VerLivro?codigo=10">
 					<figure>
 						<img src="imagens/senhor.jpg">
-						<figcaption>Senhor dos Anéis por R$169,90</figcaption>
+						<figcaption>Senhor dos Anéis por R$ 169,00</figcaption>
 					</figure>
 				</a>
 			</li>
 			<li>
-				<a href="VerLivro?codigo=11">
+				<a href="VerLivro?codigo=5">
 					<figure>
-						<img src="imagens/harry.png">
-						<figcaption>Coletânia Harry Potter por R$89,70</figcaption>
+						<img src="imagens/casamento.jpg">
+						<figcaption>O Casamento por R$39,90</figcaption>
 					</figure>
 				</a>
 			</li>
@@ -51,10 +52,10 @@
 				</a>
 			</li>
 			<li>
-				<a href="VerLivro?codigo=14">
+				<a href="VerLivro?codigo=9">
 					<figure>
-						<img src="imagens/cemiterio.jpg">
-						<figcaption>O livro do Cemitério por R$20,00</figcaption>
+						<img src="imagens/submarinas.jpg">
+						<figcaption>Vinte Mil Leguas Submarinas por R$14,90</figcaption>
 					</figure>
 				</a>
 			</li>
@@ -75,15 +76,15 @@
 				</a>
 			</li>
 			<li>
-				<a href="VerLivro?codigo=17">
+				<a href="VerLivro?codigo=19">
 					<figure>
-						<img src="imagens/justiceiro.jpg">
-						<figcaption>Justiceiro Noir por R$12,50</figcaption>
+						<img src="imagens/batman.jpeg">
+						<figcaption>Batman por R$5,90</figcaption>
 					</figure>
 				</a>
 			</li>
 		</ol>
-
+	
 </div>
 <% request.getSession().setAttribute("cliente", null); %>
  

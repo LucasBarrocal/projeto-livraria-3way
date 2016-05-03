@@ -90,14 +90,8 @@ body{
 	width: 105px;
 	height: 135px;
 }
+ 
 
-.info-cartao{
-	display: none;
-}
-
-.opt-cartao input:ACTIVE .info-cartao{
-	display: block;
-}
 
 .total-compra{
 	font-size: 17px;

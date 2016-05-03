@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
+
 @WebServlet("/FinalizarCompra")
 public class FinalizarCompra extends HttpServlet{
 	
@@ -29,6 +31,14 @@ public class FinalizarCompra extends HttpServlet{
 		Pedido pedido = new Pedido();
 		pedido.setCliente(cliente);
 		pedido.setItens(carrinho.getItens());
+		String pgto = request.getParameter("optradio");
+		System.out.println(pgto);
+		if(pgto == "cartao"){
+			pedido.setPagamento("Cartão");
+		}else if(pgto == "boleto"){
+			pedido.setPagamento("Boleto");
+		}
+		
 		pedido.setStatus("Pedido Registrado");
 		
 		PedidoDao dao = null;

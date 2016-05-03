@@ -20,6 +20,7 @@
 						<th>Data</th>
 						<th>QTD</th>
 						<th>Pedido</th>
+						<th>Pagamento</th>
 						<th>Status</th>
 					</tr>
 				</thead>
@@ -30,6 +31,7 @@
 								<td><c:out value="${pedido.dataPedidoString}" /></td>
 								<td><c:out value="${item.qtd}" /></td>
 								<td><c:out value="${item.livro.titulo}" /></td>
+								<td><c:out value="${pedido.pagamento }"/>
 								<td><c:out value="${pedido.status}" /></td>
 							</tr>
 						</c:forEach>

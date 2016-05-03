@@ -44,8 +44,14 @@
 	</div>
 	</div>
 </div>
-    <a class="btn btn-success" href="EditarCarrinho?codigo=${livro.codigo}&acao=adicionar">Adicionar ao Carrinho de compras</a>
-</div>
+<form method="post" action="EditarCarrinho" name="form${item.livro.codigo}" >
+	<input type="hidden" name="codigo" value="${item.livro.codigo}" /> 
+	<input type="hidden" name="acao" value="adicionar" />
+	<input type="submit" class="btn btn-success" name ="qtd${item.livro.codigo}" value="Adicionar ao Carrinho">
+</form>
+
+
+ </div>
 </div>
 </div>
 </div>
