@@ -10,7 +10,13 @@
 <title>Resultado</title>
 </head>
 <body>
+<c:if test="${cliente.autenticacao == false }">
 <%@ include file="mascara.html" %>
+
+</c:if>
+<c:if test="${cliente.autenticacao == true }">
+<%@ include file="masklog.html" %>
+</c:if>
 
 
         <div class="container painel-resultado">
@@ -38,16 +44,20 @@
                     <img class="thumbnail" src="${livro.imagem }" id="img-livro">
                 </a>
             </div>
-            <div class="col-md-9">
-                <h3 class="titulo">${livro.titulo }</h3>
-                <h4 class="pull-right preco">R$ ${livro.preco }0</h4>
-                <h4 class="autor">${livro.autor }</h4>
-                <p class="descricao">${livro.descricao }</p>
-            	<a class="btn btn-primary descricao" href="VerLivro?codigo=${livro.codigo}">Ver Produto <span class="glyphicon glyphicon-circle-arrow-left"></span></a>
-                <a class="btn btn-success" href="EditarCarrinho?codigo=${livro.codigo}&acao=adicionar">Adicionar ao Carrinho</a>
-            
-            </div>
-        </div>
+							<div class="col-md-9">
+								<h3 class="titulo">${livro.titulo }</h3>
+								<h4 class="pull-right preco">R$ ${livro.preco }0</h4>
+								<h4 class="autor">${livro.autor }</h4>
+								<p class="descricao">${livro.descricao }</p>
+								<a class="btn btn-primary descricao" href="VerLivro?codigo=${livro.codigo}">Ver Produto</a>
+								<form action="EditarCarrinho" method="post">
+									<input type="hidden" name="codigo" value="${livro.codigo}" />
+									<input type="hidden" name="acao" value="adicionar" /> <input
+										type="submit" value="Adicionar aos Carrinhos"
+										class="btn btn-success">
+								</form>
+							</div>
+						</div>
         </div>
         </c:forEach>
         <!-- /.row -->

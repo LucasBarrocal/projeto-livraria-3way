@@ -5,7 +5,7 @@ public class ItemCarrinho {
 	private Livro livro;
 	private double valor;
 	private String valor2;
-
+	private double desc;
 	private int qtd=1;
 	public int getCodigo() {
 		return codigo;

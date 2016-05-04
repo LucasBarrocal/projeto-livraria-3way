@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$(".cartao").hide();
+	
 	$(".boleto").hide();
     $('input[type="radio"]').click(function(){
         if($(this).attr("value")=="cartao"){

@@ -3,7 +3,7 @@ package workshop;
 import java.io.IOException;
 import java.sql.SQLException;
 
-
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,16 +14,26 @@ import org.apache.jasper.tagplugins.jstl.core.Out;
 
 @WebServlet("/FinalizarCompra")
 public class FinalizarCompra extends HttpServlet{
+	private final static String CARTAO="cartao";
+	private final static String BOLETO="boleto";
 	
 	private String mensagem;
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	private void mostrarPagina(HttpServletRequest request, HttpServletResponse response, String pagina) throws ServletException, IOException
+	{
+		request.setAttribute("mensagem", mensagem);
+		
+		RequestDispatcher rd = request.getRequestDispatcher(pagina);
+		rd.forward(request, response);
+	}
+	
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		Cliente cliente = (Cliente) request.getSession().getAttribute("cliente");
 		Carrinho carrinho = (Carrinho) request.getSession().getAttribute("carrinho");
 		
 		if(cliente == null){
-			request.setAttribute("mensagem", mensagem);
-			response.sendRedirect("login.jsp");
+			mensagem = "Faça seu login antes de concluir a compra";
+			mostrarPagina(request, response, "login.jsp");
 			return;
 		}
 		request.getSession().removeAttribute("carrinho");
@@ -31,11 +41,11 @@ public class FinalizarCompra extends HttpServlet{
 		Pedido pedido = new Pedido();
 		pedido.setCliente(cliente);
 		pedido.setItens(carrinho.getItens());
-		String pgto = request.getParameter("optradio");
-		System.out.println(pgto);
-		if(pgto == "cartao"){
+		
+		
+		if(CARTAO.equals(request.getParameter("optradio"))){
 			pedido.setPagamento("Cartão");
-		}else if(pgto == "boleto"){
+		}else if(BOLETO.equals(request.getParameter("optradio"))){
 			pedido.setPagamento("Boleto");
 		}
 		

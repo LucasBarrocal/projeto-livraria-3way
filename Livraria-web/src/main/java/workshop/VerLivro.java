@@ -26,14 +26,8 @@ public class VerLivro extends HttpServlet{
 			LivroDao dao = new LivroDao();
 			Livro livro = dao.consultar(codigo);
 			request.setAttribute("livro", livro);
-			Cliente cliente = (Cliente) request.getSession().getAttribute("cliente");
 			RequestDispatcher rd;
-			if(cliente == null){
-			 rd = request.getRequestDispatcher("livro.jsp");
-			}
-			else{
-				rd = request.getRequestDispatcher("loglivro.jsp");
-			}
+			rd = request.getRequestDispatcher("livro.jsp");
 			rd.forward(request, response);
 		} 
 		catch(SQLException e){

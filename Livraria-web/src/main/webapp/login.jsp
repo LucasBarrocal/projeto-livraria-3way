@@ -15,8 +15,8 @@
 	<form method="post" action="EditarCliente?acao=autenticar" class="container login">
 		<pre class="login-form">
 			<h1 id="login-msg">${mensagem}</h1>
-			Usuário: <input type="text" name="login" id="login-nome"/>
-			Senha:<input type="password" name="senha" id="login-senha"/>
+			Usuário: <input type="text" name="login" id="login-nome" autofocus required/>
+			Senha:<input type="password" name="senha" id="login-senha" required/>
 			<input type="submit" value="Entrar"/>
 			<a href="#">Esqueceu a senha?</a>
 		</pre>

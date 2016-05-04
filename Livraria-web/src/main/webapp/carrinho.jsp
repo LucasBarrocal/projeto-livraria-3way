@@ -13,6 +13,12 @@
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="js/Pgto.js"></script>
+<script type="text/javascript">
+	function submit(){
+		var formulario = document.getElementById('frmFinalizaCompra');
+		formulario.submit();
+	}
+</script>
 </head>
 <body>
 	<header> <nav class=" navbar navbar-primary navbar-static-top">
@@ -22,13 +28,14 @@
 		<button class="navbar-toggle" type="button"
 			data-target="navbar-collapse" data-toggle="collapse">menu</button>
 	</div>
-
+	<c:if test="${cliente.autenticacao}">
 	<ul class="nav navbar-nav collapse navbar-collapse navbar-right">
-		<li><a href="#">Olá, Cliente</a></li>
-		<li><a href="#">Carrinho</a></li>
-		<li><a href="#">Sair</a></li>
+		<li><a href="#">Olá, ${cliente.nome }</a></li>
+		<li><a href="#"></a></li>
+		<li><a href="Logout">Sair</a></li>
 		<li><a href="#"></a></li>
 	</ul>
+	</c:if>
 	</nav>
 	<style>
 .navbar {
@@ -73,19 +80,17 @@
 								<td class="produto-preco"><span>R$
 										${item.livro.preco}0</span></td>
 								<td class="quantidade">
-						
-									<form method="post" action="EditarCarrinho" name="form${item.livro.codigo}" >
-											<a href="EditarCarrinho?codigo=${item.livro.codigo}&acao=adicionar"> + </a>
+								
+										<form method="post" action="EditarCarrinho" name="form${item.livro.codigo}">
 											<input type="hidden" name="codigo" value="${item.livro.codigo}" /> 
 											<input type="hidden" name="acao" value="alterar" /> 
-											<input size="2" name="qtd${item.livro.codigo}" value="${item.qtd}" disabled />
-										<a href="EditarCarrinho?codigo=${item.livro.codigo}&acao=subtrair"> - </a>
+											<input type="number" name="qtd${item.livro.codigo}" value="${item.qtd}" min="1" max="20" onchange="submit"/>
 									</form>
-									
+								
 								</td>
 								<td class="preco-total"><span>R$ ${item.valor2}</span></td>
-								<td class="item-remove"><a
-									href="EditarCarrinho?codigo=${item.livro.codigo}&acao=remover">
+								<td class="item-remove">
+									<a href="EditarCarrinho?codigo=${item.livro.codigo}&acao=remover">
 										<span class="icone-remove">X</span> <span
 										class="hide item-remove-texto">Excluir Item</span>
 								</a></td>
@@ -105,11 +110,11 @@
 			<div class="col-md-8">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<form method="post" action="#">
+						<form method="post" action="#" id="frmFinalizaCompra">
 							<legend>Forma de Pagamento</legend>
 							
 							<div class="radio">
-								<label><input value="cartao" type="radio" name="optradio">Cartão de Crédito</label>
+								<label><input value="cartao" type="radio" name="optradio" checked="checked">Cartão de Crédito</label>
 							</div>
 							
 							<div class="cartao box">	
@@ -177,7 +182,9 @@
 					</tfoot>
 				</table>
 				<a href="Pesquisa" class="btn btn-primary">Continuar Comprando</a>
-				<a href="FinalizarCompra" class="btn btn-success">Finalizar Compra</a>
+				<c:if test="${cliente.autenticacao}">
+					<a href="FinalizarCompra" class="btn btn-success" onclick='document.getElementById("frmFinalizaCompra").submit();'>Finalizar Compra</a>
+				</c:if>
 			</div>
 		</div>
 	</div>
@@ -194,7 +201,6 @@
 	</div>
 </c:if>	
 
-<% request.getSession().setAttribute("cliente", null); %>
 
 </body>
 <%@ include file="rodape.html"%>

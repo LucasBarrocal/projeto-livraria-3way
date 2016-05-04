@@ -2,6 +2,7 @@
 <%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
 <jsp:useBean id="livro" class="workshop.Livro" scope="request"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <link href="css/estilo.css" rel="stylesheet" type="text/css">
@@ -10,7 +11,13 @@
 <title>${livro.titulo }</title>
 </head>
 <body>
-<%@include file="mascara.html" %>
+<c:if test="${cliente.autenticacao == false }">
+<%@ include file="mascara.html" %>
+
+</c:if>
+<c:if test="${cliente.autenticacao == true }">
+<%@ include file="masklog.html" %>
+</c:if>
 <br/>
 <div class="container">
 <div class="row">
@@ -44,7 +51,12 @@
 	</div>
 	</div>
 </div>
-<a href="EditarCarrinho?codigo=${item.livro.codigo}&acao=adicionar" class="btn btn-success"> Adicionar ao Carrinho </a>
+<form action="EditarCarrinho" method="post">
+	<input type="hidden" name="codigo" value="${livro.codigo}" /> 
+	<input type="hidden" name="acao" value="adicionar" /> 
+	<input type="submit" value="Adicionar aos Carrinhos" class="btn btn-success">
+</form>
+
 </div>
 </div>
 </div>

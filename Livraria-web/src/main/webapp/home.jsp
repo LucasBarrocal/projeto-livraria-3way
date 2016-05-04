@@ -11,7 +11,13 @@
 <link href="css/estilo.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<c:if test="${cliente.autenticacao == false }">
 <%@ include file="mascara.html" %>
+
+</c:if>
+<c:if test="${cliente.autenticacao == true }">
+<%@ include file="masklog.html" %>
+</c:if>
 <%@ include file="menu.html" %>
 <img alt="Promoção" src="imagens/destaque-home.jpg" id="img-destaque">
 
@@ -86,7 +92,7 @@
 		</ol>
 	
 </div>
-<% request.getSession().setAttribute("cliente", null); %>
+
  
 
 </body>

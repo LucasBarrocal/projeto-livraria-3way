@@ -32,14 +32,7 @@ public class Pesquisa extends HttpServlet {
 				System.out.println(livros.toString());
 				request.setAttribute("livros", livros);
 				RequestDispatcher rd;
-				Cliente cliente = (Cliente) request.getSession().getAttribute("cliente");
-				if(cliente!=null){
-					 rd = request.getRequestDispatcher("logresultado.jsp");
-				}
-				else{
-					 rd = request.getRequestDispatcher("resultado.jsp");	
-				}
-				
+				rd = request.getRequestDispatcher("resultado.jsp");	
 				rd.forward(request, response);
 			}
 			else{

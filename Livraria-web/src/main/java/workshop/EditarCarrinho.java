@@ -66,14 +66,10 @@ public class EditarCarrinho extends HttpServlet{
 			carrinho.altera(item);
 		}
 		request.getSession().setAttribute("carrinho", carrinho);
-		Cliente cliente = (Cliente) request.getSession().getAttribute("cliente");
+		
 		RequestDispatcher rd;
-		if(cliente == null){
-			rd = request.getRequestDispatcher("carrinho.jsp");
-		}
-		else{
-			rd = request.getRequestDispatcher("logcarrinho.jsp");
-		}
+		rd = request.getRequestDispatcher("carrinho.jsp");
+		
 		rd.forward(request, response);
 		
 	}

@@ -59,7 +59,7 @@ public class EditarCliente extends HttpServlet {
 			}
 			else{
 				request.getSession().setAttribute("cliente", cliente);
-				mostrarPagina(request,response,"loghome.jsp");
+				mostrarPagina(request,response,"home.jsp");
 			}
 		}
 
@@ -109,7 +109,7 @@ public class EditarCliente extends HttpServlet {
 					dao.alterar(cliente);
 					mensagem = "Dados alterados com sucesso!";
 				}
-			mostrarPagina(request,response,"editarCadastro.jsp");
+			mostrarPagina(request,response,"cadastro.jsp");
 			}
 				
 		
