@@ -64,6 +64,32 @@ public class EditarCarrinho extends HttpServlet{
 			}
 			item.setQtd(valor);
 			carrinho.altera(item);
+			System.out.printf("{valor: %s, qtd: %s}", item.getValor2() , valor );
+			response.getWriter().printf("{valor: %s, qtd: %s}", item.getValor2() , valor );
+			response.flushBuffer();
+			return;
+		}
+		if("remanejar".equals(acao)){
+			String val= request.getParameter("QTD");
+			String val2 = request.getParameter("ValorLivro");
+			int qtd;
+			double valorLivro, valorTotal;
+			try{
+				qtd = Integer.parseInt(val);
+				valorLivro = Double.parseDouble(val2);
+			}
+			catch(NumberFormatException e){
+				qtd = 0;
+				valorLivro = 0;
+			}
+			item.setQtd(qtd);
+			carrinho.altera(item);
+			valorTotal = valorLivro*qtd;
+			item.setValor(valorTotal);
+			response.getWriter().printf("R$ %s",item.getValor2());
+			response.flushBuffer();
+			return;
+			
 		}
 		request.getSession().setAttribute("carrinho", carrinho);
 		

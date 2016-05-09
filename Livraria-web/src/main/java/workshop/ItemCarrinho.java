@@ -51,8 +51,8 @@ public class ItemCarrinho {
 	public double getValor(){
 		return livro.getPreco()*qtd;
 	}
-	public void setValor(int valor){
-		this.valor = valor;
+	public void setValor(double d){
+		this.valor = d;
 	}
 
 	

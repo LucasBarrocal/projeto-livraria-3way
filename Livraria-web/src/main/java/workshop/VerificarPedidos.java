@@ -16,11 +16,11 @@ public class VerificarPedidos extends HttpServlet{
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
-		Cliente cliente = new Cliente();
+		Cliente cliente = (Cliente) request.getSession().getAttribute("cliente");
 		
-		cliente =(Cliente) request.getSession().getAttribute("cliente");
-		if(!cliente.isAutenticacao()){
-			request.getRequestDispatcher("login.jsp");
+		if(cliente == null || !cliente.isAutenticacao()){
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+			return;
 		}
 		
 		PedidoDao dao = null;

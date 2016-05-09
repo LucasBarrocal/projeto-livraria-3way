@@ -63,14 +63,17 @@ public class PedidoDao {
 	public List<Pedido> listar(int codCliente){
 		ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
 		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT cliente.NOME, pedido.COD_PEDIDO, pedido.DATA_PEDIDO, pedido.PAGAMENTO, pedido.STATUS, estoque.TITULO, estoque.COD_LIVRO, item_pedido.QTD FROM CLIENTE INNER JOIN pedido ON cliente.COD_CLIENTE = pedido.COD_CLIENTE INNER JOIN item_pedido ON pedido.COD_PEDIDO = item_pedido.COD_PEDIDO INNER JOIN estoque ON item_pedido.COD_LIVRO = estoque.COD_LIVRO WHERE cliente.COD_CLIENTE = ?");
+		sql.append("SELECT cliente.NOME, pedido.COD_PEDIDO, pedido.DATA_PEDIDO, pedido.PAGAMENTO, ");
+		sql.append(" pedido.STATUS, estoque.TITULO, estoque.COD_LIVRO, item_pedido.QTD ");
+		sql.append(" FROM CLIENTE INNER JOIN pedido ON cliente.COD_CLIENTE = pedido.COD_CLIENTE INNER ");
+		sql.append(" JOIN item_pedido ON pedido.COD_PEDIDO = item_pedido.COD_PEDIDO INNER JOIN estoque ON item_pedido.COD_LIVRO = estoque.COD_LIVRO WHERE cliente.COD_CLIENTE = ?");
 
 		
 		try{
 			PreparedStatement consulta = conexao.prepareStatement(sql.toString());
 			consulta.setInt(1, codCliente);
 			ResultSet resultado = consulta.executeQuery();
-			if(resultado.next()){
+			while(resultado.next()){
 				Pedido pedido = new Pedido();
 				Cliente cliente = new Cliente();
 				cliente.setNome(resultado.getString("NOME"));
@@ -82,7 +85,7 @@ public class PedidoDao {
 				
 				ArrayList<ItemCarrinho> itens = new ArrayList<ItemCarrinho>();
 				
-				do{
+				
 					ItemCarrinho item = new ItemCarrinho();
 					Livro livro = new Livro();
 					livro.setTitulo(resultado.getString("TITULO"));
@@ -90,7 +93,7 @@ public class PedidoDao {
 					item.setCodigo(resultado.getInt("COD_LIVRO"));
 					item.setQtd(resultado.getInt("QTD"));
 					itens.add(item);
-				}while(resultado.next());
+				
 				
 				pedido.setItens(itens);
 				pedidos.add(pedido);

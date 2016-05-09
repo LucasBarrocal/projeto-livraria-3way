@@ -49,12 +49,12 @@
 								<h4 class="pull-right preco">R$ ${livro.preco }0</h4>
 								<h4 class="autor">${livro.autor }</h4>
 								<p class="descricao">${livro.descricao }</p>
-								<a class="btn btn-primary descricao" href="VerLivro?codigo=${livro.codigo}">Ver Produto</a>
+								
 								<form action="EditarCarrinho" method="post">
 									<input type="hidden" name="codigo" value="${livro.codigo}" />
-									<input type="hidden" name="acao" value="adicionar" /> <input
-										type="submit" value="Adicionar aos Carrinhos"
-										class="btn btn-success">
+									<input type="hidden" name="acao" value="adicionar" /> 
+									<a class="btn btn-primary descricao" href="VerLivro?codigo=${livro.codigo}">Ver Produto</a>
+									<input type="submit" value="Adicionar aos Carrinhos" class="btn btn-success">
 								</form>
 							</div>
 						</div>
