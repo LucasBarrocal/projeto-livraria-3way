@@ -11,25 +11,23 @@ function CalcValor(pform, item) {
 			memo += "<br>id = "+id +" valor = "+val;
 			if(id == "ValorLivro"){
 				valor = val;
-				console.log('Valor = '+valor);
 			}
 			if(id == "codigo"){
 				cod = val;
-				console.log('Valor = '+cod);
 			}
 			if(id == "QTD"){
 				qtd = val;
-				console.log('Valor = '+qtd);
 			}
 		}
 	}
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
-			document.getElementById(item).innerHTML = xhttp.responseText;
+			document.getElementById(item).innerHTML = xhttp.responseText;	
 		}
 	};
 	xhttp.open("GET", "EditarCarrinho?codigo=" + cod +"&QTD="+qtd+"&ValorLivro="+valor+"&acao=remanejar", true);
 	xhttp.send();
+
 	
 }

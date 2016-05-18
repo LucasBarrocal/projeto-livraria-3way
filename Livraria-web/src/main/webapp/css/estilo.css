@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 header{
 	background-image: url(../imagens/header-back.jpg);
 	clear: both;
@@ -5,6 +7,17 @@ header{
 	
 	padding: 20px 0;
 	margin-bottom: 10px;
+}
+
+
+body{
+	background-image: url(../imagens/background.jpg);
+	
+	
+	color: #333;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	height: 100%;
+
 }
 
 .menu-opcoes{
@@ -31,14 +44,6 @@ header{
 .menu-opcoes ul li{
 	display: inline;
 	margin-left: 20px;
-}
-
-
-#logo-livraria{
-	width: 300px;
-	position:relative;	
-	padding: 10px;
-	margin: 10px;
 }
 
 
@@ -139,15 +144,6 @@ h1{
 	min-height:100%;
 }
 
-body{
-	background-image: url(../imagens/background.jpg);
-	
-	
-	color: #333;
-	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
-	height: 100%;
-
-}
 
 
 
@@ -324,6 +320,11 @@ tr{
 	border: 2px;
 	border-color:blue;
 }
+
+.table-pedido .tr-opcoes:HOVER{
+	background-color: #dcdcdc;
+}
+
 .btn-fim{
 	
 	margin-bottom: 10px;

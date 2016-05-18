@@ -89,11 +89,10 @@
 											<input type="hidden" id="ValorLivro" value="${item.livro.preco}">
 											<input type="hidden" id="codigo"
 												value="${item.livro.codigo}" />
-											 <input type="hidden" 
-												name="acao" value="alterar" /> 
+											  
 											<input type="number" id="QTD"
 												name="qtd${item.livro.codigo}" value="${item.qtd}" min="1"
-												max="20" onchange="CalcValor('form${item.livro.codigo}','item${item.livro.codigo}');" />
+												max="20" onchange="CalcValor('form${item.livro.codigo}','item${item.livro.codigo}');"/>
 										</form>
 
 									</td>

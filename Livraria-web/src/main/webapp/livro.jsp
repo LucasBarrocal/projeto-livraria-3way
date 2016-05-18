@@ -62,6 +62,6 @@
 </div>
 </div>
 <%@ include file="rodape.html" %>
- <% request.getSession().setAttribute("cliente", null); %>
+
 </body>
 </html>

@@ -18,6 +18,7 @@
 				<thead>
 					<tr class="tr-superior">
 						<th>Data</th>
+						<th>Código</th>
 						<th>QTD</th>
 						<th>Pedido</th>
 						<th>Pagamento</th>
@@ -27,8 +28,9 @@
 				<tbody>
 					<c:forEach items="${pedidos}" var="pedido">
 						<c:forEach items="${pedido.itens}" var="item">
-							<tr>
+							<tr class="tr-opcoes">
 								<td><c:out value="${pedido.dataPedidoString}" /></td>
+								<td><c:out value="${pedido.codigo}" /></td>
 								<td><c:out value="${item.qtd}" /></td>
 								<td><c:out value="${item.livro.titulo}" /></td>
 								<td><c:out value="${pedido.pagamento}"/>
