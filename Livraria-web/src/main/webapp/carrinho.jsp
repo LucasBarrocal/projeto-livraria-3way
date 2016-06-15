@@ -156,7 +156,6 @@
 										<label><input value="boleto" type="radio"
 											name="optradio">Boleto Bancário (10% desc.)</label>
 									</div>
-
 									<div class="boleto box">
 										<div class="form-group">
 											<label for="numero-CPF">Informe seu CPF</label> <input
