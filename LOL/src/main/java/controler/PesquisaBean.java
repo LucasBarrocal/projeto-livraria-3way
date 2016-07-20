@@ -5,78 +5,74 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.SessionScoped;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 import DAO.LivroDao;
 import service.Livro;
 
-@Named
+@ManagedBean(name = "pesquisaBean")
 @SessionScoped
 public class PesquisaBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private String titulo;
 	private Livro livro;
-	private ArrayList<Livro> livros= new ArrayList<Livro>();
-	
-	public String pesquisar(){
-		
-		if(titulo==null){
+	private ArrayList<Livro> livros = new ArrayList<>();
+
+	public String pesquisar() {
+
+		if (titulo == null) {
 			titulo = "";
 		}
-		System.out.println("Pesquisa: "+titulo);
+		System.out.println("Pesquisa: " + titulo);
 
-		try{
+		try {
 			LivroDao dao = new LivroDao();
 			List<Livro> array = dao.consultar(titulo);
 			int tamanho = array.size();
-			if(tamanho>0){
-				
+			if (tamanho > 0) {
+
 				livros.addAll(array);
 				System.out.println(livros.toString());
-				
-			}
-			else{
+
+			} else {
 				System.out.println(titulo + "- Esta vindo vazio!");
 			}
-		}
-		catch(SQLException e){
-				e.printStackTrace();
-			}
-		
-		return "Resultado";
-		}
-	
-	public String verLivro(Integer codigo){
-		
-		//int codigo;
-		try{
-			//codigo = Integer.parseInt(codigo);
-		}catch(NumberFormatException e){
-			codigo = 0;
-		}
-		try{
-			LivroDao dao = new LivroDao();
-			livro = dao.consultar(codigo);
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		setTitulo(null);
+
+		return "Resultado";
+	}
+
+	public String verLivro(Integer codigo) {
+
 		
+		try {
+		} catch (NumberFormatException e) {
+			codigo = 0;
+		}
+		try {
+			LivroDao dao = new LivroDao();
+			livro = dao.consultar(codigo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 		return "Livro";
 	}
-	
+
 	public ArrayList<Livro> getLivros() {
 		return livros;
 	}
 
-
 	public void setLivros(ArrayList<Livro> livros) {
 		this.livros = livros;
 	}
-
 
 	public String getTitulo() {
 		return titulo;
@@ -93,7 +89,5 @@ public class PesquisaBean implements Serializable {
 	public void setLivro(Livro livro) {
 		this.livro = livro;
 	}
-
-	
 
 }
