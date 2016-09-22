@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
+import javax.inject.Inject;
+
 import dao.ClienteDao;
 import dao.UsuarioDao;
 import model.Cliente;
@@ -14,41 +16,29 @@ public class CadastroService implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Logger LOG = Logger.getGlobal();
 	
+	@Inject
 	private ClienteDao clienteDao;
+	
+	@Inject
 	private UsuarioDao usuarioDao;
 
 	
 	public void cadastrar(Usuario usuario){
-		try{
-			usuarioDao = new UsuarioDao();
-			if(usuarioDao.existeUsuario(usuario.getLogin()) == false){
-				usuarioDao.salvar(usuario);
-			}
-			else
-				LOG.info("Já existe Usuário!");
-		}catch(SQLException e){
-			e.printStackTrace();
+		if(usuarioDao.existeUsuario(usuario.getLogin()) == false){
+			usuarioDao.salvar(usuario);
 		}
+		else
+			LOG.info("Já existe Usuário!");
 	}
 	
 	
 	public void alterarCadastro(Cliente cliente){
-		try{
-			clienteDao = new ClienteDao();
-			clienteDao.alterar(cliente);
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
+		clienteDao.alterar(cliente);
 	}
 	
 	public Cliente recuperarInfo(String nome){
 		Cliente cliente = new Cliente();
-		try{
-			clienteDao = new ClienteDao();
-			cliente = clienteDao.consultar(nome);
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
+		cliente = clienteDao.consultar(nome);
 		return cliente;
 	}
 	

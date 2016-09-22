@@ -1,10 +1,11 @@
 package service;
 
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+
+import javax.inject.Inject;
 
 import dao.LivroDao;
 import model.Livro;
@@ -16,19 +17,16 @@ public class CatalogoService implements Serializable{
 	private Livro livro;
 	private List<Livro> livros = new ArrayList<Livro>();
 	
+	@Inject
+	private LivroDao dao;
+	
 	public List<Livro> consultar(String titulo) {
 		
 		if(titulo == null){
 			titulo = "";
 		}
 		LOG.info("Pesquisa: "+titulo);
-		LivroDao dao;
-		try {
-			dao = new LivroDao();
-			livros = dao.consultar(titulo);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		livros = dao.consultar(titulo);
 		
 		
 		if(livros.size() <= 0){
@@ -38,25 +36,15 @@ public class CatalogoService implements Serializable{
 	}
 	
 	public Livro verLivro(Integer codigo){
-		LivroDao dao;
-		try {
-			dao = new LivroDao();
-			livro = dao.consultar(codigo);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+
+		livro = dao.consultar(codigo);
 		
 		return livro;
 	}
 	
 	public void cadastroLivro(Livro livro){
-		LivroDao dao;
-		try {
-			dao = new LivroDao();
-			dao.salvar(livro);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+
+		dao.salvar(livro);
 		
 	}
 

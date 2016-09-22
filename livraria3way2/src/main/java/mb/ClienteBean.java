@@ -1,21 +1,20 @@
 package mb;
 
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import model.Cliente;
 import model.Usuario;
 import service.CadastroService;
 
-@ManagedBean(name="clienteBean")
+@Named
 @SessionScoped
 public class ClienteBean implements Serializable{
 
@@ -25,19 +24,11 @@ public class ClienteBean implements Serializable{
 	private Cliente cliente;
 	private Usuario usuario;
 	
+	@Inject
 	private CadastroService service;
 	
-	@ManagedProperty("#{loginBean}")
+	@Inject
 	private LoginBean loginBean;
-	
-	public void setLoginBean(LoginBean loginBean){
-		this.loginBean = loginBean;
-	}
-	
-	@PostConstruct
-	private void init(){
-		service = new CadastroService();
-	}
 	
 	public void cadastrar(){
 
@@ -56,7 +47,6 @@ public class ClienteBean implements Serializable{
 		cliente.setCep("alterar");
 				
 		usuario.setCliente(cliente);
-		
 		service.cadastrar(usuario);
 	
 	}

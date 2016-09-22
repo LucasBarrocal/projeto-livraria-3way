@@ -1,27 +1,23 @@
 package dao;
 
-import java.sql.SQLException;
 import java.util.Collection;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 
-import model.Cliente;
 import model.Usuario;
-import util.PersistenceManager;
 
 public class UsuarioDao implements Dao<Usuario, String> {
 	
-	EntityManager em;
-	
-	public UsuarioDao() throws SQLException{
-		this.em = PersistenceManager.INSTANCE.getEntityManager();
-	}
-
+	@Inject
+	private EntityManager em;
+		
 	@Override
 	public Usuario consultar(String id) {
 		// TODO Auto-generated method stub
@@ -34,6 +30,7 @@ public class UsuarioDao implements Dao<Usuario, String> {
 		
 	}
 	public boolean existeUsuario(String login){
+		
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Usuario> q = cb.createQuery(Usuario.class);
 		Root<Usuario> root = q.from(Usuario.class);
@@ -48,16 +45,9 @@ public class UsuarioDao implements Dao<Usuario, String> {
 	}
 
 	@Override
+	@Transactional
 	public void salvar(Usuario usuario) {
-		try{
-			em.getTransaction().begin();
-			em.persist(usuario);
-			em.getTransaction().commit();
-		} catch(Exception e){
-			e.printStackTrace();
-			em.getTransaction().rollback();
-		}
-		em.close();
+		em.persist(usuario);	
 	}
 
 	@Override

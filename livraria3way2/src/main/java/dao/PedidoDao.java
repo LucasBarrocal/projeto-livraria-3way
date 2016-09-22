@@ -1,25 +1,24 @@
 package dao;
 
-import java.sql.SQLException;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 
 import model.ItemCarrinho;
 import model.Pedido;
-import util.PersistenceManager;
 
 public class PedidoDao implements Dao<Pedido, Integer> {
-	EntityManager em;
 	
-	public PedidoDao() throws SQLException{
-		this.em = PersistenceManager.INSTANCE.getEntityManager();
-	}
+	@Inject
+	private EntityManager em;
 	
 	@Override
 	public Pedido consultar(Integer id) {
@@ -34,13 +33,12 @@ public class PedidoDao implements Dao<Pedido, Integer> {
 	}
 
 	@Override
+	@Transactional
 	public void salvar(Pedido pedido) {
-		em.getTransaction().begin();
 		pedido.setCliente(em.merge(pedido.getCliente()));
 		pedido.getItens().forEach(e->{e.setLivro(em.merge(e.getLivro()));});
 		em.persist(pedido);
-		em.getTransaction().commit();
-		em.close();
+		
 	}
 
 	@Override
@@ -77,5 +75,5 @@ public class PedidoDao implements Dao<Pedido, Integer> {
 		
 		return itens.getSingleResult().getItens();
 	}
-
+	
 }

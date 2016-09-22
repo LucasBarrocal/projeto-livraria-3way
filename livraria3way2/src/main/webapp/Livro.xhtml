@@ -10,6 +10,7 @@
 	<ui:composition template="/WEB-INF/template/layout.xhtml">
 
 		<ui:define name="content">
+			<p:growl id="growl" showDetail="true" sticky="false" />
 			<div class="container">
 
 				<div class="row">
@@ -18,7 +19,7 @@
 							<section class="busca">
 							<h2>Busca</h2>
 							<h:form id="frm-busca">
-								<h:inputText id="search" value="#{livroBean.titulo}" size="12" />
+								<h:inputText id="search" value="#{livroBean.titulo}" size="12" required="true" requiredMessage="Digite o nome de um livro!"/>
 								<h:commandButton value="Search"
 									action="#{livroBean.pesquisar}" />
 							</h:form> 
@@ -28,7 +29,7 @@
 							<h2>Departamentos</h2>
 							<nav> <h:form id="frm-depart">
 								<ul>
-									<li><h:commandLink value="Livros" />
+									<li><h:commandLink value="Livros" action="#{livroBean.pesquisar()}"/>
 										<ul>
 											<li><h:commandLink value="Auto-Ajuda" /></li>
 											<li><h:commandLink value="Bibliografias" /></li>

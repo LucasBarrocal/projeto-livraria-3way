@@ -13,7 +13,7 @@ public class Pedido {
 	@Column(name="COD_PEDIDO")
 	private int codigo;
 	
-	@OneToMany(cascade={CascadeType.ALL})
+	@OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER) 
 	@JoinColumn(name="COD_PEDIDO",foreignKey=@ForeignKey(name="fk_pedido_itens"))
 	private List<ItemCarrinho> itens;
 	

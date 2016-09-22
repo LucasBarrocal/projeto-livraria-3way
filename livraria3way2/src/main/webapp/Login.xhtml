@@ -23,10 +23,10 @@
 							<p:panelGrid>
 								
 								<p:outputLabel value="Login" for="login"/><br/>
-								<p:inputText id="login" required="true" value="#{loginBean.login}"/>
+								<p:inputText id="login" required="true" value="#{loginBean.login}" requiredMessage="Digite seu nickname"/>
 								
 								<p:outputLabel value="Senha" for="senha"/><br/>
-								<p:password id="senha" required="true" value="#{loginBean.senha}"/>
+								<p:password id="senha" required="true" value="#{loginBean.senha}" requiredMessage="Digite sua senha"/>
 							</p:panelGrid>
 							<p:commandButton value="Entrar" action="#{loginBean.autenticar}" 
 								icon="ui-icon-key" iconPos="right"/>

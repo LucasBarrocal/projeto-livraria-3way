@@ -7,15 +7,16 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.http.Part;
 
 
 import model.Livro;
 import service.CatalogoService;
 
-@ManagedBean(name="livroBean")
+@Named
 @SessionScoped
 public class LivroBean implements Serializable {
 	
@@ -28,13 +29,9 @@ public class LivroBean implements Serializable {
 	private static final String RESULTADO = "Resultado";
 	private static final String LIVRO = "Livro";
 	private static final String SUCESSO = "TesteLivro";
-	private CatalogoService service;
 	
-	@PostConstruct
-	private void init(){
-		service = new CatalogoService();
-		LOG.info("LivroBean.init()");
-	}
+	@Inject
+	private CatalogoService service;
 	
 	public String pesquisar(){
 		livros = null;

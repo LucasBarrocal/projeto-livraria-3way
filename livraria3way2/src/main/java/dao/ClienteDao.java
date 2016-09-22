@@ -1,24 +1,22 @@
 package dao;
 
-import java.sql.SQLException;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 
 import model.Cliente;
-import util.PersistenceManager;
 
 public class ClienteDao implements Dao<Cliente, String> {
 	
-	EntityManager em;
-	
-	public ClienteDao() throws SQLException{
-		this.em = PersistenceManager.INSTANCE.getEntityManager();
-	}
+	@Inject
+	private EntityManager em;
+
 
 	@Override
 	public void salvar(Cliente cliente) {
@@ -36,15 +34,9 @@ public class ClienteDao implements Dao<Cliente, String> {
 	}
 
 	@Override
+	@Transactional
 	public void alterar(Cliente cliente) {
-		try{
-			em.getTransaction().begin();
-			em.merge(cliente);
-			em.getTransaction().commit();
-		}catch(Exception e){
-			e.printStackTrace();
-			em.getTransaction().rollback();
-		}
+		em.merge(cliente);	
 	}
 		
 

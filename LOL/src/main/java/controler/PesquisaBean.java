@@ -5,22 +5,24 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import DAO.LivroDao;
 import service.Livro;
 
 @ManagedBean(name = "pesquisaBean")
-@SessionScoped
+@ApplicationScoped
 public class PesquisaBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private String titulo;
 	private Livro livro;
-	private ArrayList<Livro> livros = new ArrayList<>();
+	private List<Livro> livros = new ArrayList<>();
 
 	public String pesquisar() {
 
@@ -31,11 +33,10 @@ public class PesquisaBean implements Serializable {
 
 		try {
 			LivroDao dao = new LivroDao();
-			List<Livro> array = dao.consultar(titulo);
-			int tamanho = array.size();
+			livros = dao.consultar(titulo);
+			int tamanho = livros.size();
 			if (tamanho > 0) {
 
-				livros.addAll(array);
 				System.out.println(livros.toString());
 
 			} else {
@@ -66,11 +67,11 @@ public class PesquisaBean implements Serializable {
 		return "Livro";
 	}
 
-	public ArrayList<Livro> getLivros() {
+	public List<Livro> getLivros() {
 		return livros;
 	}
 
-	public void setLivros(ArrayList<Livro> livros) {
+	public void setLivros(List<Livro> livros) {
 		this.livros = livros;
 	}
 

@@ -1,11 +1,13 @@
 package mb;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.persistence.Transient;
 
 import model.Carrinho;
@@ -14,9 +16,11 @@ import model.ItemCarrinho;
 import model.Pedido;
 import service.CompraService;
 
-@ManagedBean(name="pedidoBean")
+@Named
 @SessionScoped
-public class PedidoBean {
+public class PedidoBean implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	
 	private static final String LOGIN = "Login";
 	private static final String VERIFICAR_PEDIDO = "VerificarPedido";
@@ -30,16 +34,12 @@ public class PedidoBean {
 	@Transient
 	private double total;
 	
-	@ManagedProperty("#{loginBean}")
+	@Inject
 	private LoginBean loginBean;
 	
+	@Inject
 	private CompraService compraService;
-	
-	@PostConstruct
-	private void init(){
-		compraService = new CompraService();
-	}
-	
+		
 	public String verificarPedido(){
 		if(! loginBean.isAutenticado()){
 			return LOGIN;

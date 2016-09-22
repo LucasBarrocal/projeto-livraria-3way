@@ -1,24 +1,32 @@
 package service;
 
+import java.io.Serializable;
+
+import javax.inject.Inject;
+
 import dao.UsuarioDao;
 import model.Usuario;
 
-public class LoginService {
+public class LoginService implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
+	@Inject
+	private UsuarioDao usuarioDao;
 	
 	public Usuario autenticar(String login, String senha,boolean autenticar) {
 		Usuario user = null;
 		try {
-			UsuarioDao dao = new UsuarioDao();
 			user = new Usuario();
 			user.setLogin(login);
 			user.setSenha(senha);
-			user = dao.autenticar(user);
+			user = usuarioDao.autenticar(user);
 			if(user != null){
 				user.setAutenticacao(autenticar);
 			}
 			
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 		return user;
 	}

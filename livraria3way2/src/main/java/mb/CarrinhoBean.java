@@ -3,44 +3,34 @@ package mb;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import model.Carrinho;
-import model.Cliente;
 import model.EnumTipoPagamento;
 import model.ItemCarrinho;
 import model.Usuario;
 import service.CompraService;
 
-@ManagedBean(name="carrinhoBean")
+@Named
 @SessionScoped
 public class CarrinhoBean implements Serializable {
 	
 	private Carrinho carrinho;
 	private EnumTipoPagamento pagamento;
 	private String cartao;
-	private CompraService compraService;
 	private static final String CARRINHO = "Carrinho";
 	
-	@ManagedProperty("#{loginBean}")
+	@Inject
+	private CompraService compraService;
+	
+	@Inject
 	private LoginBean loginBean;
 	
-	public LoginBean getLoginBean() {
-		return loginBean;
-	}
-
-	public void setLoginBean(LoginBean loginBean) {
-		this.loginBean = loginBean;
-	}
-
-	@PostConstruct
-	private void init(){
-		compraService = new CompraService();
-	}
 	
 	private Carrinho getInstanciaCarrinho(){
 		if(carrinho == null){

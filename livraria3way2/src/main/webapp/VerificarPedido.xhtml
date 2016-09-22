@@ -16,8 +16,9 @@
 				</div>
 				<div class="table-pedidos">
 					<h:form rendered="#{not empty user}">
-						<p:dataTable value="#{pedidoBean.pedidos}" var="pedido" rows="15" paginator="true" paginatorPosition="bottom">
-
+						<p:dataTable value="#{pedidoBean.pedidos}" var="pedido" rows="2" paginator="true" 
+								paginatorPosition="bottom" lazy="true">
+							<p:ajax event="rowSelect"/>
 							<p:column headerText="Código do pedido" width="180" style="text-align:center">
 								<h:commandLink value="#{pedido.codigo}" action="#{pedidoBean.verificarItens(pedido.codigo)}"/>
 							</p:column>

@@ -1,29 +1,25 @@
 package dao;
 
-import java.sql.SQLException;
 import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 
 import model.Livro;
-import util.PersistenceManager;
 
 public class LivroDao implements Dao<Livro,Integer>{
 	Logger LOG = Logger.getGlobal();
 	
+	@Inject
 	private EntityManager em;
-	
-	public LivroDao() throws SQLException{
-		this.em = PersistenceManager.INSTANCE.getEntityManager();
-	}
-	
+		
 	@Override
 	public Livro consultar(Integer codigo){
 		return em.find(Livro.class, codigo);
@@ -55,13 +51,12 @@ public class LivroDao implements Dao<Livro,Integer>{
 		// TODO Auto-generated method stub
 		
 	}
+	
 	@Override
+	@Transactional
 	public void salvar(Livro livro) {
 		
-		
-		em.getTransaction().begin();
 		em.persist(livro);
-		em.getTransaction().commit();
 		
 	}
 }
